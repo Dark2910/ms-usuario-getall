@@ -1,6 +1,6 @@
 package com.eespindola.ms.getall.dao;
 
-import com.eespindola.ms.getall.utils.Result;
+import com.eespindola.ms.getall.models.dto.Result;
 
 public interface UsuarioDAO {
 

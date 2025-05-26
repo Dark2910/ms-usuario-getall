@@ -3,7 +3,7 @@ package com.eespindola.ms.getall.dao.Implementation;
 import com.eespindola.ms.getall.dao.Mapper.UsuarioMapper;
 import com.eespindola.ms.getall.dao.UsuarioDAO;
 import com.eespindola.ms.getall.utils.Constantes;
-import com.eespindola.ms.getall.utils.Result;
+import com.eespindola.ms.getall.models.dto.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -23,13 +23,13 @@ public class UsuarioImp implements UsuarioDAO {
         String query = Constantes.USUARIO_GET_ALL;
 
         try {
-            result.objects = jdbcTemplate.query(query, new UsuarioMapper());
-            result.isCorrect = true;
+            result.setObjects( jdbcTemplate.query(query, new UsuarioMapper()));
+            result.setIsCorrect(true);
 
         } catch (Exception e){
-            result.isCorrect = true;
-            result.exception = e;
-            result.message = e.getLocalizedMessage();
+            result.setIsCorrect(false);
+            result.setException(e);
+            result.setMessage(e.getLocalizedMessage());
         }
         return  result;
     }

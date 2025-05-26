@@ -2,14 +2,11 @@ package com.eespindola.ms.getall.controller;
 
 import com.eespindola.ms.getall.dao.Implementation.UsuarioImp;
 import com.eespindola.ms.getall.jpa.UsuarioRepository;
-import com.eespindola.ms.getall.utils.Result;
+import com.eespindola.ms.getall.models.dto.Result;
 import com.eespindola.ms.getall.models.UsuarioML;
 import com.eespindola.ms.getall.utils.FolioRequest;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.text.MessageFormat;
 
@@ -24,9 +21,9 @@ public class UsuarioRestController {
     private UsuarioImp usuarioDAO;
 
     @PostMapping
-    public Result<UsuarioML> GetAll(@RequestHeader(value = "folioRequest", required = false) String folioRequest){
+    public Result<UsuarioML> GetAll(@RequestHeader(value = "folioRequest", required = false) String folioRequest, @RequestBody Result<Void> request){
 
-        folioRequest = (folioRequest == null || folioRequest.isEmpty() || folioRequest.isBlank())? FolioRequest.CrearFolioRequest() : folioRequest;
+//        folioRequest = (folioRequest == null || folioRequest.isEmpty() || folioRequest.isBlank())? FolioRequest.CrearFolioRequest() : folioRequest;
 
         Result<UsuarioML> result = new Result<>();
 
@@ -39,14 +36,15 @@ public class UsuarioRestController {
 //               usuariosML.add(UsuarioMapper.Map(usuarioJPA));
 //            }
 
-            result.objects = usuarioDAO.GetAll().objects;
-            result.message = MessageFormat.format("Folio: {0}", folioRequest);
-            result.isCorrect = true;
+            result.setObjects(usuarioDAO.GetAll().getObjects());
+//            result.message = MessageFormat.format("Folio: {0}", folioRequest);
+            result.setFolio(request.getFolio());
+            result.setIsCorrect(true);
 
         } catch (Exception e){
-            result.isCorrect = false;
-            result.exception = e;
-            result.message = e.getLocalizedMessage();
+            result.setIsCorrect(false);
+            result.setException(e);
+            result.setMessage(e.getLocalizedMessage());
         }
         return result;
     }
