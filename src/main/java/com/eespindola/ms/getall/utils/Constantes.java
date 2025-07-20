@@ -3,7 +3,7 @@ package com.eespindola.ms.getall.utils;
 public class Constantes {
 
     /* Consultas */
-    public static final String USUARIO_GET_ALL = "SELECT * FROM ViewUsuario";
+    public static final String USUARIO_GET_ALL = "SELECT * FROM VW_Usuario";
 
     public static final String HIKARI_CONNECTION = "hikariTemplate";
 
