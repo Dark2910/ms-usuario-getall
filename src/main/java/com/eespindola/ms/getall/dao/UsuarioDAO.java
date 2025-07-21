@@ -1,9 +1,11 @@
 package com.eespindola.ms.getall.dao;
 
-import com.eespindola.ms.getall.models.dto.Result;
+import com.eespindola.ms.getall.models.UsuarioML;
+
+import java.util.List;
 
 public interface UsuarioDAO {
 
-    Result GetAll();
+    List<UsuarioML> getAll();
 
 }

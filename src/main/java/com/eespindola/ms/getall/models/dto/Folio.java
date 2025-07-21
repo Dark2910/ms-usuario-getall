@@ -12,6 +12,6 @@ import lombok.NoArgsConstructor;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Folio {
 
-    @JsonProperty("folio")
-    private String folio;
+    @JsonProperty("folioRequest")
+    private String folioRequest;
 }

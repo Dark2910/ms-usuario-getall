@@ -1,4 +1,4 @@
-package com.eespindola.ms.getall.jpa.Entities;
+package com.eespindola.ms.getall.jpa.entities;
 
 import jakarta.persistence.*;
 import lombok.Data;

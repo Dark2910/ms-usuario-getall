@@ -1,11 +1,11 @@
-package com.eespindola.ms.getall.models;
+package com.eespindola.ms.getall.models.dto;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-public class UsuarioML {
+public class UsuarioResponse {
 
     private int idUsuario;
     private String folioId;

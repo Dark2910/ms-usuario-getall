@@ -1,6 +1,6 @@
 package com.eespindola.ms.getall.utils;
 
-public class Constantes {
+public class ConstantesUtil {
 
     /* Consultas */
     public static final String USUARIO_GET_ALL = "SELECT * FROM VW_Usuario";
