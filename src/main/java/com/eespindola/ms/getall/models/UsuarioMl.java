@@ -5,7 +5,7 @@ import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-public class UsuarioML {
+public class UsuarioMl {
 
     private int idUsuario;
     private String folioId;

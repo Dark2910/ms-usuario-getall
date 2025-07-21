@@ -1,10 +1,9 @@
 package com.eespindola.ms.getall.service.imp;
 
-import com.eespindola.ms.getall.dao.UsuarioDAO;
+import com.eespindola.ms.getall.dao.UsuarioDao;
 import com.eespindola.ms.getall.jpa.UsuarioRepository;
-import com.eespindola.ms.getall.jpa.entities.UsuarioJPA;
 import com.eespindola.ms.getall.mapper.UsuarioMapper;
-import com.eespindola.ms.getall.models.UsuarioML;
+import com.eespindola.ms.getall.models.UsuarioMl;
 import com.eespindola.ms.getall.models.dto.Result;
 import com.eespindola.ms.getall.models.dto.UsuarioResponse;
 import com.eespindola.ms.getall.service.UsuarioService;
@@ -20,12 +19,12 @@ import java.util.stream.Collectors;
 public class UsuarioServiceImpl implements UsuarioService {
 
     private final UsuarioRepository usuarioRepository;
-    private final UsuarioDAO usuarioDAO;
+    private final UsuarioDao usuarioDAO;
 
     @Autowired
     public UsuarioServiceImpl (
             UsuarioRepository repository,
-            UsuarioDAO dao
+            UsuarioDao dao
     ){
         this.usuarioRepository = repository;
         this.usuarioDAO = dao;
@@ -43,10 +42,10 @@ public class UsuarioServiceImpl implements UsuarioService {
 //                    .map(UsuarioMapper::toUsuarioResponse)
 //                            .collect(Collectors.toList());
 
-            List<UsuarioML> listaUsuariosML = usuarioDAO.getAll();
+            List<UsuarioMl> listaUsuariosML = usuarioDAO.getAll();
             List<UsuarioResponse> listaUsuariosResponse = listaUsuariosML.stream()
                     .map(UsuarioMapper::toUsuarioResponse)
-                    .collect(Collectors.toList());
+                    .toList();
 
             response.setObjects(listaUsuariosResponse);
             response.setIsCorrect(true);

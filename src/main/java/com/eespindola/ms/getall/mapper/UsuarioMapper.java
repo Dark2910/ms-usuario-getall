@@ -1,7 +1,7 @@
 package com.eespindola.ms.getall.mapper;
 
-import com.eespindola.ms.getall.jpa.entities.UsuarioJPA;
-import com.eespindola.ms.getall.models.UsuarioML;
+import com.eespindola.ms.getall.jpa.entities.UsuarioJpa;
+import com.eespindola.ms.getall.models.UsuarioMl;
 import com.eespindola.ms.getall.models.dto.UsuarioResponse;
 import com.eespindola.ms.getall.utils.ConstantesUtil;
 import org.springframework.jdbc.core.RowMapper;
@@ -11,11 +11,11 @@ import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class UsuarioMapper implements RowMapper<UsuarioML> {
+public class UsuarioMapper implements RowMapper<UsuarioMl> {
 
     @Override
-    public UsuarioML mapRow(ResultSet rs, int rowNum) throws SQLException {
-        UsuarioML usuarioML = new UsuarioML();
+    public UsuarioMl mapRow(ResultSet rs, int rowNum) throws SQLException {
+        UsuarioMl usuarioML = new UsuarioMl();
 
         usuarioML.setIdUsuario(rs.getInt(1));
         usuarioML.setFolioId(rs.getString(2));
@@ -30,13 +30,12 @@ public class UsuarioMapper implements RowMapper<UsuarioML> {
 
         return usuarioML;
     }
-
     private static String getFechaNacimiento(Date fecha) {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(ConstantesUtil.DATE_FORMAT);
         return simpleDateFormat.format(fecha);
     }
 
-    public static UsuarioResponse toUsuarioResponse(UsuarioJPA usuarioJPA){
+    public static UsuarioResponse toUsuarioResponse(UsuarioJpa usuarioJPA){
         UsuarioResponse usuarioResponse = new UsuarioResponse();
 
         usuarioResponse.setIdUsuario(usuarioJPA.getIdUsuario());
@@ -53,7 +52,7 @@ public class UsuarioMapper implements RowMapper<UsuarioML> {
         return usuarioResponse;
     }
 
-    public static UsuarioResponse toUsuarioResponse(UsuarioML usuarioML){
+    public static UsuarioResponse toUsuarioResponse(UsuarioMl usuarioML){
         UsuarioResponse usuarioResponse = new UsuarioResponse();
 
         usuarioResponse.setIdUsuario(usuarioML.getIdUsuario());
