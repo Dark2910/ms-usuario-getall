@@ -1,7 +1,7 @@
 package com.eespindola.ms.getall.controller;
 
 import com.eespindola.ms.getall.models.dto.Result;
-import com.eespindola.ms.getall.models.dto.UsuarioResponse;
+import com.eespindola.ms.getall.models.dto.UsuarioDto;
 import com.eespindola.ms.getall.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -20,7 +20,7 @@ public class UsuarioRestController {
     }
 
     @PostMapping
-    public Result<UsuarioResponse> getAll(@RequestHeader(value = "folioRequest", required = false) String folioRequest, @RequestBody Result<Void> request){
+    public Result<UsuarioDto> getAll(@RequestHeader(value = "folioRequest", required = false) String folioRequest, @RequestBody Result<Void> request){
 
 //        folioRequest = (folioRequest == null || folioRequest.isEmpty() || folioRequest.isBlank())? FolioRequest.CrearFolioRequest() : folioRequest;
 

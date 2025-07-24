@@ -5,15 +5,14 @@ import com.eespindola.ms.getall.jpa.UsuarioRepository;
 import com.eespindola.ms.getall.mapper.UsuarioMapper;
 import com.eespindola.ms.getall.models.UsuarioMl;
 import com.eespindola.ms.getall.models.dto.Result;
-import com.eespindola.ms.getall.models.dto.UsuarioResponse;
+import com.eespindola.ms.getall.models.dto.UsuarioDto;
 import com.eespindola.ms.getall.service.UsuarioService;
-import com.eespindola.ms.getall.utils.FolioUtil;
+import com.eespindola.ms.getall.utils.FolioUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Objects;
-import java.util.stream.Collectors;
 
 @Service
 public class UsuarioServiceImpl implements UsuarioService {
@@ -31,10 +30,10 @@ public class UsuarioServiceImpl implements UsuarioService {
     }
 
     @Override
-    public Result<UsuarioResponse> consultarUsuarios(Result<Void> request) {
+    public Result<UsuarioDto> consultarUsuarios(Result<Void> request) {
 
-        Result<UsuarioResponse> response = new Result<>();
-        response.setFolioRequest(Objects.requireNonNullElse(request.getFolioRequest(), FolioUtil.createFolioRequest()));
+        Result<UsuarioDto> response = new Result<>();
+        response.setFolioRequest(Objects.requireNonNullElse(request.getFolioRequest(), FolioUtils.createFolioRequest()));
 
         try {
 //            List<UsuarioJPA> listaUsuariosJPA = usuarioRepository.findAll();
@@ -43,8 +42,8 @@ public class UsuarioServiceImpl implements UsuarioService {
 //                            .collect(Collectors.toList());
 
             List<UsuarioMl> listaUsuariosML = usuarioDAO.getAll();
-            List<UsuarioResponse> listaUsuariosResponse = listaUsuariosML.stream()
-                    .map(UsuarioMapper::toUsuarioResponse)
+            List<UsuarioDto> listaUsuariosResponse = listaUsuariosML.stream()
+                    .map(UsuarioMapper::toUsuarioDto)
                     .toList();
 
             response.setObjects(listaUsuariosResponse);

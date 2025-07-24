@@ -1,10 +1,10 @@
 package com.eespindola.ms.getall.service;
 
 import com.eespindola.ms.getall.models.dto.Result;
-import com.eespindola.ms.getall.models.dto.UsuarioResponse;
+import com.eespindola.ms.getall.models.dto.UsuarioDto;
 
 public interface UsuarioService {
 
-    Result<UsuarioResponse> consultarUsuarios(Result<Void> request);
+    Result<UsuarioDto> consultarUsuarios(Result<Void> request);
 
 }

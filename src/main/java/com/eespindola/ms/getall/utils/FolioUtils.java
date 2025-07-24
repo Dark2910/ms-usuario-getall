@@ -5,7 +5,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.Random;
 
-public class FolioUtil {
+public class FolioUtils {
 
     public static String createFolioRequest() {
         Random random = new Random();

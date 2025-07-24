@@ -2,8 +2,8 @@ package com.eespindola.ms.getall.mapper;
 
 import com.eespindola.ms.getall.jpa.entities.UsuarioJpa;
 import com.eespindola.ms.getall.models.UsuarioMl;
-import com.eespindola.ms.getall.models.dto.UsuarioResponse;
-import com.eespindola.ms.getall.utils.ConstantesUtil;
+import com.eespindola.ms.getall.models.dto.UsuarioDto;
+import com.eespindola.ms.getall.utils.ConstantesUtils;
 import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;
@@ -31,12 +31,12 @@ public class UsuarioMapper implements RowMapper<UsuarioMl> {
         return usuarioML;
     }
     private static String getFechaNacimiento(Date fecha) {
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(ConstantesUtil.DATE_FORMAT);
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(ConstantesUtils.DATE_FORMAT);
         return simpleDateFormat.format(fecha);
     }
 
-    public static UsuarioResponse toUsuarioResponse(UsuarioJpa usuarioJPA){
-        UsuarioResponse usuarioResponse = new UsuarioResponse();
+    public static UsuarioDto toUsuarioDto(UsuarioJpa usuarioJPA){
+        UsuarioDto usuarioResponse = new UsuarioDto();
 
         usuarioResponse.setIdUsuario(usuarioJPA.getIdUsuario());
         usuarioResponse.setFolioId(usuarioJPA.getFolio());
@@ -52,8 +52,8 @@ public class UsuarioMapper implements RowMapper<UsuarioMl> {
         return usuarioResponse;
     }
 
-    public static UsuarioResponse toUsuarioResponse(UsuarioMl usuarioML){
-        UsuarioResponse usuarioResponse = new UsuarioResponse();
+    public static UsuarioDto toUsuarioDto(UsuarioMl usuarioML){
+        UsuarioDto usuarioResponse = new UsuarioDto();
 
         usuarioResponse.setIdUsuario(usuarioML.getIdUsuario());
         usuarioResponse.setFolioId(usuarioML.getFolioId());
