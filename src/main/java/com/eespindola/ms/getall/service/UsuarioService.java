@@ -5,6 +5,6 @@ import com.eespindola.ms.getall.models.dto.UsuarioDto;
 
 public interface UsuarioService {
 
-    Result<UsuarioDto> consultarUsuarios(Result<Void> request);
+    Result<UsuarioDto> consultarUsuarios();
 
 }

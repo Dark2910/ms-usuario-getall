@@ -16,19 +16,19 @@ import javax.sql.DataSource;
 public class HikariDataSourceConfig {
 
     private final String URL;
-    private final String USER;
+    private final String USERNAME;
     private final String PASSWORD;
 
     public static String DRIVER_CLASS_NAME;
 
     public HikariDataSourceConfig(
-            @Value("${DB.CONNECTION.URL}") String url,
-            @Value("${DB.CONNECTION.USERNAME}") String user,
-            @Value("${DB.CONNECTION.PASSWORD}") String password,
-            @Value("${DB.CONNECTION.DRIVER_CLASS_NAME}") String driverClassName
+            @Value("${spring.datasource.url}") String url,
+            @Value("${spring.datasource.username}") String username,
+            @Value("${spring.datasource.password}") String password,
+            @Value("${spring.datasource.driver-class-name}") String driverClassName
     ){
         this.URL = url;
-        this.USER = user;
+        this.USERNAME = username;
         this.PASSWORD = password;
 
         HikariDataSourceConfig.DRIVER_CLASS_NAME = driverClassName;
@@ -40,7 +40,7 @@ public class HikariDataSourceConfig {
         HikariConfig hikariConfig = new HikariConfig();
 
         hikariConfig.setJdbcUrl(URL);
-        hikariConfig.setUsername(USER);
+        hikariConfig.setUsername(USERNAME);
         hikariConfig.setPassword(PASSWORD);
         hikariConfig.setDriverClassName(DRIVER_CLASS_NAME);
 

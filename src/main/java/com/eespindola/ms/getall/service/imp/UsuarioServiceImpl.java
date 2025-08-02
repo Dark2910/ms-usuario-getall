@@ -30,10 +30,10 @@ public class UsuarioServiceImpl implements UsuarioService {
     }
 
     @Override
-    public Result<UsuarioDto> consultarUsuarios(Result<Void> request) {
+    public Result<UsuarioDto> consultarUsuarios() {
 
         Result<UsuarioDto> response = new Result<>();
-        response.setFolioRequest(Objects.requireNonNullElse(request.getFolioRequest(), FolioUtils.createFolioRequest()));
+        response.setFolioRequest(FolioUtils.createFolioRequest());
 
         try {
 //            List<UsuarioJPA> listaUsuariosJPA = usuarioRepository.findAll();

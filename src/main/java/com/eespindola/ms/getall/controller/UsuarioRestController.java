@@ -20,12 +20,10 @@ public class UsuarioRestController {
     }
 
     @PostMapping
-    public Result<UsuarioDto> getAll(@RequestHeader(value = "folioRequest", required = false) String folioRequest, @RequestBody Result<Void> request){
-
-//        folioRequest = (folioRequest == null || folioRequest.isEmpty() || folioRequest.isBlank())? FolioRequest.CrearFolioRequest() : folioRequest;
-
-        return usuarioService.consultarUsuarios(request);
+    public Result<UsuarioDto> usuarioGetAll(
+            @RequestHeader(value = "folioRequest", required = false) String folioRequest
+    ) {
+        return usuarioService.consultarUsuarios();
     }
-
 
 }
