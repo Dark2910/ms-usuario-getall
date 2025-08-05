@@ -2,6 +2,10 @@ package com.eespindola.ms.getall.utils;
 
 public class ConstantesUtils {
 
+    private ConstantesUtils(){
+        throw new IllegalArgumentException("Util class");
+    }
+
     public static final String USUARIO_GET_ALL = "SELECT * FROM VW_Usuario";
 
     public static final String JDBC_DATA_SOURCE = "jdbcDataSource";
